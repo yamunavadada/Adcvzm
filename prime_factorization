@@ -1,0 +1,59 @@
+#include<iostream>
+using namespace std;
+long long int N=1000001;
+long long seive[1000001];
+void genmodseive()
+{
+    seive[0]=seive[1]=1;
+    for(int i=2;i<N;i++)
+    {
+        seive[i]=i;
+    }
+    for(int i=2;i*i<=N;i++)
+    {
+        if(seive[i]==1)
+        {
+            for(int j=i*i;j<=N;j+=i)
+            {
+                if(seive[j]==j)
+                {
+                    seive[j]=i;
+                }
+            }
+        }
+    }
+
+}
+int main()
+{
+    genmodseive();
+    int q;
+    cin>>q;
+    while(q--)
+    {
+        int n,i=2,count;
+        cin>>n;
+        for(int i=2;i*i<=n;i++)
+        {
+            count=0;
+            if(n%i==0)
+            {
+                cout<<i<<"^";
+            
+                while(n%i==0)
+                {
+                    count++;
+                    n=n/i;
+                }
+                cout<<count;
+                            }
+            
+                
+        }
+        cout<<endl; 
+    }   
+        
+    
+    
+}
+
