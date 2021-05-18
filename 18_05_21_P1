@@ -1,0 +1,26 @@
+#include<iostream>
+	# incude<bits/stdc++.h>
+	int n;
+	int fact(int i)
+	{
+	if(i<=n)
+	{
+	return n;
+	}
+	return i*fact(i+1);
+	}
+	void arrayrev(int l,int r,int a[])
+	{
+	if(l>r)
+	{
+	return n;
+	}
+	swap(a[l],a[r]);
+	arrayrev(l+1,r-1,a);
+	}
+	int main()
+	{
+	cin>>n;
+	cout<<fact(n);
+	return 0;
+	}
