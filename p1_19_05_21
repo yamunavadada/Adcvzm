@@ -1,0 +1,33 @@
+Class Solution {
+	public:
+	    
+	    int m_target;
+	    
+	    void recur_sol(set<vector<int>> &result, vector<int> &m_candidates, vector<int> &cur_sol, int cur_val){
+	        if(cur_val > m_target){
+	            return;
+	        }
+	        if(cur_val == m_target){
+	            vector<int> tmp(cur_sol);
+	            sort(tmp.begin(),tmp.end());
+	            result.emplace(tmp);
+	        }
+	        for(auto num : m_candidates){
+	            cur_sol.push_back(num);
+	            recur_sol(result, m_candidates,cur_sol,cur_val+num);
+	            cur_sol.pop_back();
+	        }
+	    }
+	    
+	    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+	        set<vector<int>> result;
+	        m_target = target;
+	        vector<int> tmp;
+	        recur_sol(result, candidates,tmp,0);
+	        vector<vector<int>> result_vec;
+	        for(auto itr = result.begin(); itr != result.end(); ++itr){
+	            result_vec.push_back(*itr);
+	        }
+	        return result_vec;        
+	    }
+	};
